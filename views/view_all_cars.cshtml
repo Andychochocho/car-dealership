@@ -7,29 +7,10 @@
   <body>
     <h1>Our Available List of Cars</h1>
     <ul>
-        <ul>
-          <li>MakeModel = "2014 Porsche 911"</li>
-          <li>Price = 114991</li>
-          <li>Miles = 7864</li>
-        </ul>
-
-         <ul>
-           <li>MakeModel = "2011 Ford F450"</li>
-           <li>Price = 55995</li>
-           <li>Miles = 14241</li>
-         </ul>
-
-         <ul>
-            <li>MakeModel = "2013 Lexus RX 350" </li>
-            <li>Price = 44700 </li>
-            <li>Miles = 20000 </li>
-         </ul>
-
-         <ul>
-            <li>MakeModel = "Mercedes Benz CLS550"</li>
-            <li>Price = 39900</li>
-            <li>Miles = 37979</li>
-         </ul>
+      @foreach(string newCar in Model)
+   {
+     <li>@newCar.GetAllCars()</li>
+   }
     </ul>
     <a href="add_new_cars.cshtml">Add a new Car!</a>
   </body>

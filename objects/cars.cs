@@ -6,9 +6,8 @@ namespace CarDealership.Objects
     private string _makeModel;
     private int _price;
     private int _mileage;
-    private static List<string> _makeModels = new List<string> {};
-    private static List<int> _prices = new List<int> {};
-    private static List<int> _mileages = new List<int> {};
+    private static List<Cars> _instances = new List<Cars>();
+
     public Cars (string MakeModel, int Price, int Mileage)
     {
       _makeModel = MakeModel;
@@ -41,24 +40,17 @@ namespace CarDealership.Objects
     }
 
 
-    public static List<string> GetAllMakeModel()
+    public static List<Cars> GetAllCars()
     {
-      return _makeModels;
+      return _instances;
     }
-    public static List<int> GetAllPrice()
+    public void Save(Cars newCar)
     {
-      return _prices;
+      _instances.Add(newCar);
     }
-    public static List<int> GetAllMileage()
-    {
-      return _mileages;
-    }
-
-    public void Save()
-    {
-      _makeModels.Add(_makeModel);
-      _prices.Add(_price);
-      _mileages.Add(_mileage);
-    }
+    public static void ClearAll()
+   {
+     _instances.Clear();
+   }
   }
 }

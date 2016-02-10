@@ -10,15 +10,17 @@ namespace CarDealership
     {
       Get["/"] = _ => View["add_new_cars.cshtml"];
       Get["/view_all_cars"] = _ => {
-        List<string> allMakeModel = Cars.GetAllMakeModel();
-        List<int> allPrice = Cars.GetAllPrice();
-        List<int> allMileage = Cars.GetAllMileage();
-        return View["view_all_cars.cshtml", allMakeModel];
+       List<Cars> _allCars = Cars.GetAllCars();
+        return View["view_all_cars.cshtml", _allCars];
       };
       Post["/cars_added"] = _ => {
       Cars newCar = new Cars (Request.Form["make-model"], Request.Form["price"], Request.Form["mileage"]);
-        newCar.Save();
+        newCar.Save(newCar);
         return View["cars_added.cshtml", newCar];
+      };
+      Post["/cars_cleared"] = _ => {
+        Cars.ClearAll();
+        return View["cars_cleared.cshtml"];
       };
     }
   }
