@@ -7,11 +7,17 @@
   <body>
     <h1>Our Available List of Cars</h1>
     <ul>
-      @foreach(string newCar in Model)
-   {
-     <li>@newCar.GetAllCars()</li>
-   }
+      @foreach(var thecars in Model)
+      {
+       <li>@thecars.GetMakeModel()</li>
+       <li>@thecars.GetPrice()</li>
+       <li>@thecars.GetMileage()</li>
+      </br>
+      }
     </ul>
-    <a href="add_new_cars.cshtml">Add a new Car!</a>
+    <button  type="submit" name="button"><a href="/">Add a new Car!</a></button>
+    <form action="/cars_cleared" method="post">
+  <button type="submit" name="button">Clear All Tasks</button>
+</form>
   </body>
 </html>
